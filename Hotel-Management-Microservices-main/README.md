@@ -1,140 +1,152 @@
-# Hotel Management Microservices
+# 🏨 Hotel Management Microservices
 
-Welcome to the Hotel Management Microservices project. This application is designed to manage various aspects of a hotel, including booking rooms, adding hotels, and handling user ratings.
+A scalable **microservices-based hotel management system** built using **Spring Boot & Spring Cloud**, designed to handle hotel bookings, user management, ratings, and distributed service communication.
 
-## Table of Contents
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Checking Service Status](#checking-service-status)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
+---
 
-## Features
-This application provides the following features:
+## 🚀 Features
 
-### User Service
-- User registration and authentication.
-- User can book hotel rooms.
-- User can cancel bookings.
-- Wallet system to track all transactions for users.
+### 👤 User Service
 
-### Hotel Service
-- Add hotels with details.
-- Add rooms to hotels.
-- Get hotel details by ID or name.
-- Get a list of all available rooms in a hotel.
-- Get a list of all booked rooms in a hotel.
+* User registration & authentication (OAuth 2.0)
+* Book & cancel hotel rooms
+* Wallet system for transactions
 
-### Booking Service
-- Book rooms in hotels.
-- Get booking details by booking ID.
-- Get a list of all bookings.
+### 🏨 Hotel Service
 
-### Rating Service
-- Add ratings and reviews for hotels.
-- Get all ratings.
-- Get ratings by user ID or hotel ID.
+* Add and manage hotels
+* Add rooms to hotels
+* View available & booked rooms
 
-### Service Registry
-- Register and discover microservices.
+### 📅 Booking Service
 
-### Configuration Server
-- Manage centralized configurations for microservices.
+* Create and manage bookings
+* Retrieve booking details
 
-### API Gateway
-- Gateway for accessing microservices.
+### ⭐ Rating Service
 
-## Tech Stack
-- Java
-- Spring Boot
-- Spring Cloud
-- Spring Cloud Eureka
-- Spring Cloud Config
-- Spring Security
-- OAuth 2.0
-- Spring Data JPA
-- Spring Web
-- Spring Data MongoDB
-- Spring Data REST
-- Spring Cloud Gateway
-- Netflix Eureka
-- Thymeleaf
-- MySQL
-- MongoDB
-- Okta
-- Git
+* Add reviews & ratings
+* Fetch ratings by user or hotel
 
-## Getting Started
-To get started with the project, make sure you have the required tools and dependencies installed.
+### ⚙️ Infrastructure Services
 
-### Installation
-1. Clone this repository: `git clone https://github.com/Amanastel/Hotel-Management-Microservices.git`
-2. Navigate to the project directory: `cd Hotel-Management-Microservices`
+* Service Registry (Eureka)
+* API Gateway
+* Config Server (centralized config)
 
-### Configuration
-- Configure the properties of each microservice according to your requirements.
+---
 
-### Usage
-- Run each microservice individually to start the Hotel Management system.
+## 🛠️ Tech Stack
 
-### Checking Service Status
-- **Eureka Server**:
-  - Eureka Dashboard: `http://localhost:8761`
-    - You can check the status of all registered microservices here. It will show which services are up and running and their corresponding instances.
+* **Backend:** Java, Spring Boot, Spring Cloud
+* **Security:** Spring Security, OAuth 2.0
+* **Service Discovery:** Netflix Eureka
+* **Gateway:** Spring Cloud Gateway
+* **Database:** MySQL, MongoDB
+* **Other:** REST APIs, JPA, Git
 
-Instances currently registered with Eureka:
+---
 
-- **API-GATEWAY**:
-  - Availability Zones: UP (1) - `192.168.1.4:API-GATEWAY:8086`
+## 📦 Microservices Architecture
 
-- **CONFIG-SERVER**:
-  - Availability Zones: UP (1) - `192.168.1.4:CONFIG-SERVER:8085`
+* API Gateway → Entry point
+* Eureka Server → Service discovery
+* Config Server → Central config
+* User Service
+* Hotel Service
+* Booking Service
+* Rating Service
 
-- **HOTELS-SERVICE**:
-  - Availability Zones: UP (1) - `192.168.1.4:hotels-service:8082`
+---
 
-- **RATING-SERVICE**:
-  - Availability Zones: UP (1) - `192.168.1.4:rating-service:8083`
+## ⚙️ Getting Started
 
-- **USERS-SERVICE**:
-  - Availability Zones: UP (1) - `192.168.1.4:users-service:8081`
+### 🔧 Prerequisites
 
-- **API Gateway Default URL**: `http://localhost:8086`
+* Java 17+
+* Maven
+* MySQL & MongoDB
+* Git
 
-### User Service Routes
-- User login: `http://localhost:8086/auth/login`
-  - Login on this URL to obtain an access token. You can use this access token to make authenticated requests to other service endpoints.
-- Fetch all users: `http://localhost:8086/users/all`
-- User registration: `http://localhost:8086/users/register`
-- User login: `http://localhost:8086/users/login`
-- Book a hotel room: `http://localhost:8086/users/addBooking`
-- Complete a Booking hotel: `http://localhost:8086/users/completeBooking/{bookingId}`
-- Cancel a booking: `http://localhost:8086/users/cancelBooking/{bookingId}`
-- Add wallet Balance transactions: `http://localhost:8086/users/wallet/addMoney/{email}?amount=00.0`
-- View wallet Balance transactions: `http://localhost:8086/users/wallet/getBalance/{email}`
-- View wallet transactions: `http://localhost:8086/users/wallet/getTransactions/{email}`
+---
 
-### Hotel Service Routes
-- Fetch all hotels: `http://localhost:8086/hotels/all`
-- Fetch hotel by ID: `http://localhost:8086/hotels/{hotelId}`
-- Add a hotel: `http://localhost:8086/hotels/add`
-- Add a room to a hotel: `http://localhost:8086/hotels/{hotelId}/rooms/add`
-- Book a room in a hotel: `http://localhost:8086/hotels/{hotelId}/bookings/add`
-- Get all bookings in a hotel: `http://localhost:8086/hotels/{hotelId}/bookings/all`
+## 📥 Installation
 
-### Rating Service Routes
-- Fetch all ratings: `http://localhost:8086/ratings/all`
-- Add a rating: `http://localhost:8086/ratings/add`
-- Fetch ratings by user ID: `http://localhost:8086/ratings/user/{userId}`
-- Fetch ratings by hotel ID: `http://localhost:8086/ratings/hotel/{hotelId}`
+```bash
+git clone https://github.com/your-username/Hotel-Management-Microservices.git
+cd Hotel-Management-Microservices
+```
 
-## Contributing
-Contributions are welcome. Please create an issue or pull request if you'd like to contribute to this project.
+---
 
-## License
-This project is licensed under the [MIT License](LICENSE).
+## ⚙️ Configuration
+
+* Update `application.properties` for:
+
+  * Database credentials
+  * Ports
+  * Service names
+
+---
+
+## ▶️ Running the Project
+
+Start services in this order:
+
+1. Config Server
+2. Eureka Server
+3. API Gateway
+4. Other Microservices
+
+---
+
+## 📊 Service Monitoring
+
+Eureka Dashboard:
+👉 http://localhost:8761
+
+API Gateway Base URL:
+👉 http://localhost:8086
+
+---
+
+## 🔗 API Endpoints (Sample)
+
+### 👤 User Service
+
+* Register → `/users/register`
+* Login → `/auth/login`
+* Book Room → `/users/addBooking`
+
+### 🏨 Hotel Service
+
+* Get Hotels → `/hotels/all`
+* Add Hotel → `/hotels/add`
+
+### ⭐ Rating Service
+
+* Add Rating → `/ratings/add`
+* Get Ratings → `/ratings/all`
+
+---
+
+## 🔐 Authentication
+
+* Uses OAuth 2.0
+* Get token from:
+
+```
+/auth/login
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, open an issue first.
+
+---
+
+## 📄 License
+
+Licensed under the MIT License.
