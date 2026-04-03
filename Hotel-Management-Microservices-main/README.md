@@ -100,16 +100,6 @@ Start services in this order:
 
 ---
 
-## 📊 Service Monitoring
-
-Eureka Dashboard:
-👉 http://localhost:8761
-
-API Gateway Base URL:
-👉 http://localhost:8086
-
----
-
 ## 🔗 API Endpoints (Sample)
 
 ### 👤 User Service
